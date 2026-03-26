@@ -18,6 +18,7 @@
       --shadow: 0 10px 24px rgba(0,0,0,0.06);
       --max-width: 900px;
       --radius: 24px;
+      --button-colour: #febda7;
     }
 
     * { box-sizing: border-box; }
@@ -72,28 +73,34 @@
     .hero-sub br { display:none; }
 
     .nav-stack {
-      display: flex;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
       margin: 28px 0 20px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      -webkit-overflow-scrolling: touch;
     }
 
-    .nav-stack::-webkit-scrollbar { height: 6px; }
-    .nav-stack::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 999px; }
+    .nav-stack a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.2;
+    }
 
-    
+    .nav-stack::-webkit-scrollbar { display: none; }
+    .nav-stack::-webkit-scrollbar-thumb { background: transparent; border-radius: 999px; }
 
     .nav-stack a {
       color: var(--text);
       text-decoration: none;
       font-weight: 800;
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       background: white;
       border: 2px solid #000;
-      border-radius: 999px;
-      padding: 10px 16px;
+      border-radius: 22px;
+      padding: 12px 14px;
       box-shadow: 4px 4px 0 #000;
     }
 
@@ -123,10 +130,10 @@
       margin-bottom: 14px;
     }
 
-    .label-pink { background: #f0627d; }
-    .label-green { background: #2ec4b6; }
-    .label-cyan { background: #4db6ff; }
-    .label-yellow { background: #ffcc00; }
+    .label-pink { background: var(--pink); }
+    .label-green { background: var(--green); }
+    .label-cyan { background: var(--cyan); }
+    .label-yellow { background: var(--yellow); }
 
     p { margin: 0 0 12px; }
     ul { margin: 8px 0 0; padding-left: 1.2rem; }
@@ -189,17 +196,23 @@
       box-shadow: 6px 6px 0 #000;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 900;
-      background: var(--pink);
-      padding: 12px 18px;
-      border-radius: 999px;
-      border: 2px solid #000;
-    }
+	.button {
+	  display: inline-block;
+	  margin-top: 10px;
+	  text-decoration: none;
+	  color: #000;
+	  font-weight: 900;
+	  background: var(--button-colour);
+	  padding: 12px 18px;
+	  border-radius: 999px;
+	  border: 2px solid #000;
+	  transition: filter 0.3s ease, transform 0.2s ease;
+	}
+
+	.button:hover {
+	  filter: brightness(0.85);
+	  transform: translateY(-1px);
+	}
 
     .contact-grid {
       display: grid;
@@ -228,6 +241,8 @@
     }
 
     @media (min-width: 700px) {
+      .nav-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
       .wrap { padding: 28px 24px 70px; }
       .section { padding: 28px 24px; }
       .simple-grid { grid-template-columns: 1fr 1fr; }
@@ -258,14 +273,15 @@
     </nav>
 
     <section class="section" id="about">
-      <div class="label label-yellow">What is AAG?</div>
+      <div class="label label-green">What is AAG?</div>
       <p>The Adolescent Advisory Group (AAG) is part of a research project at the University of Cambridge exploring how people learn languages and how we can improve language learning for young people.</p>
       <p> We want young people to help shape our research so that it is, <strong>clear</strong>, <strong>engaging</strong>, <strong>inclusive</strong> and <strong>relevant</strong> to you.</p>
       <p>You would not be taking part in the research study itself. You would be acting as an <strong>advisor</strong> by sharing your views on the study and how it should be designed.</p>
     </section>
     
+    
         <section class="section" id="join">
-      <div class="label label-cyan">Who can join?</div>
+      <div class="label label-yellow">Who can join?</div>
       <ul>
         <li>Aged 10 to 24 years old</li>
         <li>Currently learning or have learned an additional language</li>
@@ -275,7 +291,7 @@
     </section>
 
     <section class="section" id="helping">
-      <div class="label label-green">What you’ll help with</div>
+      <div class="label label-cyan">What you’ll help with</div>
       <ul>
         <li>Review study materials (e.g., instructions, information sheets)</li>
         <li>Test online language and learning tasks</li>
@@ -319,11 +335,11 @@
           <p>Final feedback and wrap-up.</p>
         </div>
       </div>
-      <p class="small-note" style="margin-top:12px;">Dates will be confirmed later and decided according to your availability.</p>
+      <p class="small-note" style="margin-top:12px;">Exact dates to be decided based on advisors' availability.</p>
     </section>
 
     <section class="section">
-      <div class="label label-yellow">What you’ll get</div>
+      <div class="label label-green">What you’ll get</div>
       <ul>
         <li>Paid <strong>£96.30</strong> for your time (total for attending all sessions)</li>
         <li>Certificate of involvement</li>
@@ -332,8 +348,8 @@
       </ul>
     </section>
 
-    <section class="section" id="safety">
-      <div class="label label-green">Safety &amp; privacy</div>
+     <section class="section" id="safetu">
+      <div class="label label-yellow">Safety &amp; privacy</div>
       <p>Your safety and wellbeing are very important to us. For this, we have the following procedures in place:</p>
       <ul>
         <li>The group is facilitated by a university researcher experienced in advisory groups</li>
@@ -346,33 +362,30 @@
     </section>
 
     <section class="section" id="apply">
-      <div class="label label-pink">How to apply</div>
-      <p>If you are interested, complete the short expression of interest form.</p>
-      <p>We will select members on a rolling basis, while also aiming for a varied mix of experiences and perspectives across the group.</p>
-      <div class="apply-box">
-        <p><strong>Interested in joining?</strong></p>
-        <p>Use the form below to express your interest.</p>
+      <div class="label label-cyan">How to apply</div>
+      <p>If you are interested, please complete the short expression of interest form.</p>
+      <p>Selection will be light-touch and on a rolling basis. While we aim to include people as applications come in, we will prioritise building a group with a diverse mix of experiences and perspectives.</p>
         <a class="button" href="linklinklinklinlklinklinkl" target="_blank" rel="noopener noreferrer">Apply here</a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="label label-cyan">Who is running this?</div>
+     <section class="section">
+      <div class="label label-pink">Who is running this?</div>
       <div class="contact-grid">
         <div class="contact-card">
-          <p><strong>Lois Ann Parri</strong><br>PhD Researcher</p>
+          <p><strong>Lois Ann Parri</strong><br>Group Lead and PhD Researcher</p>
           <p>Brain, Language &amp; Bilingualism Lab<br>Department of Psychology<br>University of Cambridge</p>
           <p><a href="mailto:lap68@cam.ac.uk">lap68@cam.ac.uk</a></p>
         </div>
         <div class="contact-card">
-          <p><strong>Dr Mirjana Bozic</strong><br>Principal Investigator</p>
+          <p><strong>Dr Mirjana Bozic</strong><br>Primary Supervisor</p>
           <p>Brain, Language &amp; Bilingualism Lab<br>Department of Psychology<br>University of Cambridge</p>
           <p><a href="mailto:mb383@cam.ac.uk">mb383@cam.ac.uk</a></p>
         </div>
       </div>
     </section>
 
-    <p class="footer">Designed for easy phone viewing from a QR code.</p>
+    <p class="footer">For any further queries, email <a href="mailto:lap68@cam.ac.uk">lap68@cam.ac.uk</a> or <a href="mailto:mb383@cam.ac.uk">mb383@cam.ac.uk</a></p>
       </div>
   </main>
 </body>
